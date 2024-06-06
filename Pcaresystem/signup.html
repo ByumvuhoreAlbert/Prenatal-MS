@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign In</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign In As</h1>
+    <button id="doctorBtn">DOCTOR</button>
+    <button id="nurseBtn">NURSE</button>
+
+    <br><br>
+
+    <label for="username">Username/Email</label>
+    <input type="text" id="username" placeholder="Enter username">
+
+    <br><br>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter password">
+
+    <br><br>
+
+    <button id="signInBtn">SIGN IN AS DOCTOR</button>
+
+    <script>
+        
+        const doctorBtn = document.getElementById('doctorBtn');
+        const nurseBtn = document.getElementById('nurseBtn');
+        const signInBtn = document.getElementById('signInBtn');
+
+        doctorBtn.addEventListener('click', () => {
+            signInBtn.textContent = 'SIGN IN AS DOCTOR';
+        });
+
+        nurseBtn.addEventListener('click', () => {
+            signInBtn.textContent = 'SIGN IN AS NURSE';
+        });
+    </script>
+</body>
+</html>

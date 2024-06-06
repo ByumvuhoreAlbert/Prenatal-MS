@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    form {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<form id="myForm" onsubmit="validateForm(event)">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" >
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" >
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" >
+
+    <label for="nationalId">National ID:</label>
+    <input type="number" id="nationalId" name="nationalId" >
+
+    <label for="phoneNumber">Telephone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" >
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+function validateForm(event) {
+    event.preventDefault();
+
+    // Clear previous errors
+    clearErrors();
+    var isValid = true;
+    var name = document.getElementById("name").value;
+    if (!name.trim()) {
+        isValid = false;
+        showError("name", "Please enter your name.");
+    }
+
+    // Date of Birth validation (optional)
+    var dob = document.getElementById("dob").value;
+
+    // Age validation (optional)
+    var age = document.getElementById("age").value;
+    if (isNaN(age) || age <= 0) {
+        isValid = false;
+        showError("age", "Please enter a valid age.");
+    }
+
+    // National ID validation (optional)
+    var nationalId = document.getElementById("nationalId").value;
+    if (isNaN(nationalId) || nationalId <= 0) {
+        isValid = false;
+        showError("nationalId", "Please enter a valid national ID.");
+    }
+
+    // Telephone Number validation
+    var phoneNumber = document.getElementById("phoneNumber").value;
+    if (!phoneNumber.match(/^\d{10}$/)) {
+        isValid = false;
+        showError("phoneNumber", "Please enter a valid phone number (10 digits).");
+    }
+
+    if (isValid) {
+        // Form data is valid, you can proceed to submit the form
+        // Here you would typically send the form data to the server or perform any other actions
+
+        // For demonstration purposes, let's just log the form data
+        var formData = new FormData(document.getElementById("myForm"));
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+
+        // After validation, you can submit the form using AJAX or any other method to insert data into the database
+    }
+}
+
+function showError(fieldId, errorMessage) {
+    var field = document.getElementById(fieldId);
+    field.style.borderColor = "red";
+    var errorDiv = document.createElement("div");
+    errorDiv.className = "error";
+    errorDiv.textContent = errorMessage;
+    field.parentNode.appendChild(errorDiv);
+}
+
+function clearErrors() {
+    var errorElements = document.querySelectorAll(".error");
+    errorElements.forEach(function(element) {
+        element.parentNode.removeChild(element);
+    });
+    var formFields = document.querySelectorAll("input[type='text'], input[type='tel'], input[type='date'], input[type='number']");
+    formFields.forEach(function(field) {
+        field.style.borderColor = "#ccc";
+    });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+.calendar {
+    width: 320px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-image: url('../img/img.jpg');
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  
+  .day {
+    padding: 10px;
+    text-align: center;
+  }
+/* Add this style */
+/* Add these styles */
+.current-date {
+    border: 2px solid rgb(255, 136, 0);
+  }
+  
+/* Add these styles */
+.day {
+    color: rgb(60, 61, 60);
+    border-bottom: 1px solid skyblue;
+  }
+  
+  .header button {
+    background-color: transparent;
+    outline: none;
+    border: 0;
+  }
+  
+  #monthYear {
+    color: MediumSeaGreen;
+  }
+     /* Add these styles */
+.days div {
+    color: #84a79b;
+    font-weight: bold;
+  }
+  
+  .days .day {
+    color: #84a79b;
+    font-weight: bold;
+  }
+  
+  .daysOfWeek {
+    color: skyblue;
+    font-weight: bold;
+  }
+   
