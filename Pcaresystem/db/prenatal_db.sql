@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 20, 2024 at 09:14 AM
+-- Generation Time: Jun 10, 2024 at 01:52 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.2.0
 
@@ -33,62 +33,30 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   `patientID` int DEFAULT NULL,
   `fullNames` varchar(30) DEFAULT NULL,
   `telephone` varchar(30) DEFAULT NULL,
-  `contact` varchar(30) DEFAULT NULL,
   `doctorNames` varchar(20) DEFAULT NULL,
-  `specialists` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `appointDate` date NOT NULL,
+  `Reminder1` datetime(6) NOT NULL,
+  `Reminder2` datetime(6) NOT NULL,
+  `Reminder3` datetime(6) NOT NULL,
   `reason` text,
   `status` enum('Pending','Approved') NOT NULL,
   PRIMARY KEY (`appointID`),
   KEY `patientID` (`patientID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`appointID`, `patientID`, `fullNames`, `telephone`, `contact`, `doctorNames`, `specialists`, `appointDate`, `reason`, `status`) VALUES
-(1, 230001, 'UWIBAMBE Fabiola', '+250 739382931', '0784481603', 'Real Lotus', 'Neonatologists', '2024-05-30', 'vb', 'Approved'),
-(2, 230002, 'Rosine', '+250784481603', '0784481603', 'Real Lotus', 'Obstetricians', '2024-06-15', 'Ultrasound treatments and health education ', 'Approved'),
-(3, 230003, 'Rosine', '+250739382931', '0784481603', 'Emile Kayihura', 'Midwives', '2024-06-20', 'Health Education', 'Approved'),
-(4, 230003, 'Rosine', '+250739382931', '0784481603', 'Emile Kayihura', 'Midwives', '2024-06-20', 'Health Education', 'Approved');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `blood_tests`
---
-
-DROP TABLE IF EXISTS `blood_tests`;
-CREATE TABLE IF NOT EXISTS `blood_tests` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `test_data` date DEFAULT NULL,
-  `PatientID` int NOT NULL,
-  `names` varchar(255) DEFAULT NULL,
-  `contacts` varchar(255) DEFAULT NULL,
-  `wbc_test` varchar(255) DEFAULT NULL,
-  `rbc_test` varchar(255) DEFAULT NULL,
-  `hb_test` varchar(255) DEFAULT NULL,
-  `plt_test` varchar(255) DEFAULT NULL,
-  `blood_type` tinytext,
-  `blood_pressure` varchar(25) DEFAULT NULL,
-  `rpr_np` enum('-N','+P') DEFAULT NULL,
-  `hiv_np` enum('-N','+P') DEFAULT NULL,
-  `malaria` enum('-N','+P') DEFAULT NULL,
-  `hepatite_b` enum('-N','+P') DEFAULT NULL,
-  `hepatite_c` enum('-N','+P') DEFAULT NULL,
-  `glycemia_test` varchar(255) DEFAULT NULL,
-  `additional_info` text,
-  PRIMARY KEY (`id`),
-  KEY `PatientID` (`PatientID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `blood_tests`
---
-
-INSERT INTO `blood_tests` (`id`, `test_data`, `PatientID`, `names`, `contacts`, `wbc_test`, `rbc_test`, `hb_test`, `plt_test`, `blood_type`, `blood_pressure`, `rpr_np`, `hiv_np`, `malaria`, `hepatite_b`, `hepatite_c`, `glycemia_test`, `additional_info`) VALUES
-(1, '2024-05-09', 230001, 'UWIBAMBE Fabiola', '1', '5.8', '350', '38', '12', 'A', '23', '+P', '+P', '+P', '+P', '+P', '23', 'hgsdh');
+INSERT INTO `appointments` (`appointID`, `patientID`, `fullNames`, `telephone`, `doctorNames`, `appointDate`, `Reminder1`, `Reminder2`, `Reminder3`, `reason`, `status`) VALUES
+(11, 230031, 'UWIBAMBE Fabiola', '+250739382931', 'Emile Kayihura', '2024-05-28', '2024-05-23 08:30:00.000000', '2024-05-25 08:30:00.000000', '2024-05-27 08:30:00.000000', 'Health education', 'Approved'),
+(27, 230044, 'Tumusime Alice', '+250784481603', 'Emile Kayihura', '2024-05-31', '2024-05-26 15:30:00.000000', '2024-05-28 15:30:00.000000', '2024-05-30 15:30:00.000000', 'Health Education', 'Approved'),
+(26, 230042, 'Uwamahoro Sandrine', '+250784481603', 'Real Lotus', '2024-05-30', '2024-05-25 11:56:00.000000', '2024-05-27 11:56:00.000000', '2024-05-29 11:56:00.000000', 'hello', 'Pending'),
+(25, 230042, 'Uwamahoro Sandrine', '+250784481603', 'Real Lotus', '2024-05-31', '2024-05-26 14:30:00.000000', '2024-05-28 14:30:00.000000', '2024-05-30 14:30:00.000000', 'test', 'Pending'),
+(24, 230042, 'Uwamahoro Sandrine', '+250784481603', 'Emile Kayihura', '2024-05-31', '2024-05-25 22:30:00.000000', '2024-05-27 22:30:00.000000', '2024-05-29 22:30:00.000000', 'Health Education Appointments', 'Pending'),
+(23, 230042, 'Uwamahoro Sandrine', '+250784481603', 'Emile Kayihura', '2024-05-30', '2024-05-25 09:30:00.000000', '2024-05-27 09:30:00.000000', '2024-05-29 09:30:00.000000', 'Ultrasound test', 'Pending'),
+(22, 230031, 'UWIBAMBE Fabiola', '+250739382931', 'Emile Kayihura', '2024-06-20', '2024-06-15 08:00:00.000000', '2024-06-17 08:00:00.000000', '2024-06-19 08:00:00.000000', 'Ultrasound test ', 'Pending'),
+(21, 230042, 'Uwamahoro Sandrine', '+250784481603', 'Emile Kayihura', '2024-06-08', '2024-06-03 07:00:00.000000', '2024-06-05 07:00:00.000000', '2024-06-07 07:00:00.000000', 'hello', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -135,6 +103,33 @@ INSERT INTO `clinical_history` (`cid`, `regNo`, `names`, `numbers`, `information
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `complications`
+--
+
+DROP TABLE IF EXISTS `complications`;
+CREATE TABLE IF NOT EXISTS `complications` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `patientID` int NOT NULL,
+  `name` text,
+  `phone` varchar(255) DEFAULT NULL,
+  `date` date NOT NULL,
+  `exam_type` varchar(255) NOT NULL,
+  `complication` varchar(255) NOT NULL,
+  `additional_info` text,
+  PRIMARY KEY (`id`),
+  KEY `patientID` (`patientID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `complications`
+--
+
+INSERT INTO `complications` (`id`, `patientID`, `name`, `phone`, `date`, `exam_type`, `complication`, `additional_info`) VALUES
+(1, 230029, 'Kuramukobwa Emelance', '+250739382931', '2024-05-29', 'Ultrasound Exam', 'Amniotic Fluid Index', 'Based on previous test result the pregnant mother with the provided information has a high increase of amniotic fluid index.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctortable`
 --
 
@@ -146,16 +141,16 @@ CREATE TABLE IF NOT EXISTS `doctortable` (
   `Phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Hospital` text NOT NULL,
   `Specialists` text NOT NULL,
-  `Password` varchar(20) NOT NULL,
+  `Password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`AdminID`)
-) ENGINE=MyISAM AUTO_INCREMENT=23004 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23005 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `doctortable`
 --
 
 INSERT INTO `doctortable` (`AdminID`, `FullNames`, `Emails`, `Phone`, `Hospital`, `Specialists`, `Password`) VALUES
-(23003, 'Real Lotus', 'albertr.lotus23@yahoo.com', '+250739382931', 'Byumba', 'Neonatologists', 'Real@2024');
+(23004, 'Lotus', 'albertr.lotus23@yahoo.com', '+250784481603', 'Byumba', 'Midwives', '$2y$10$VQsyDM.52YbNoHOZ.sX8BeT7VWArB68./vg.eGeiYk151n37XMcLK');
 
 -- --------------------------------------------------------
 
@@ -197,31 +192,65 @@ INSERT INTO `general_infor` (`gid`, `regNo`, `names`, `information_type`, `resul
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laboratory_tests`
+-- Table structure for table `laboratoryexams`
 --
 
-DROP TABLE IF EXISTS `laboratory_tests`;
-CREATE TABLE IF NOT EXISTS `laboratory_tests` (
-  `tID` int NOT NULL AUTO_INCREMENT,
-  `contacts` int NOT NULL,
-  `testDate` date NOT NULL,
-  `regNo` int NOT NULL,
-  `phone` varchar(40) NOT NULL,
-  `glucosuria` varchar(20) DEFAULT NULL,
-  `proteinuria` varchar(20) DEFAULT NULL,
-  `urinanalysis` varchar(20) DEFAULT NULL,
-  `comment` varchar(40) NOT NULL,
-  PRIMARY KEY (`tID`),
-  KEY `regNo` (`regNo`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `laboratoryexams`;
+CREATE TABLE IF NOT EXISTS `laboratoryexams` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `Test_Date` date NOT NULL,
+  `patientID` int NOT NULL,
+  `Contact` int NOT NULL,
+  `WBC` varchar(30) NOT NULL,
+  `RBC` varchar(30) NOT NULL,
+  `Hb` varchar(30) NOT NULL,
+  `Plt` varchar(30) NOT NULL,
+  `RPR_NP` varchar(55) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `HIV_NP` varchar(55) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Malaria_NP` varchar(55) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Hepatite_B_NP` varchar(55) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Hepatite_C_NP` varchar(55) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Glycemia` varchar(40) NOT NULL,
+  `AdditionalComments` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `patientID` (`patientID`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `laboratory_tests`
+-- Dumping data for table `laboratoryexams`
 --
 
-INSERT INTO `laboratory_tests` (`tID`, `contacts`, `testDate`, `regNo`, `phone`, `glucosuria`, `proteinuria`, `urinanalysis`, `comment`) VALUES
-(4, 1, '2024-04-29', 230001, '+250 739382931', '30.6%', '28.9%', '2.9%', 'sansshjsahsah'),
-(5, 1, '2024-04-29', 230001, '+250 739382931', '30.6%', '28.9%', '2.9%', 'sansshjsahsah');
+INSERT INTO `laboratoryexams` (`id`, `Test_Date`, `patientID`, `Contact`, `WBC`, `RBC`, `Hb`, `Plt`, `RPR_NP`, `HIV_NP`, `Malaria_NP`, `Hepatite_B_NP`, `Hepatite_C_NP`, `Glycemia`, `AdditionalComments`) VALUES
+(3, '0000-00-00', 230002, 1, '8.2x10^9/L', '6.6x10^12/L', '15.3g/dL', '250x10^9/L', 'Weakly Reactive', 'Negative', 'Negative', 'Negative', 'Negative', '56mg/dL', 'fina oo'),
+(4, '0000-00-00', 230004, 1, '8.2x10^9/L', '6.6x10^12/L', '15.3g/dL', '250x10^9/L', 'Reactive (Positive)', 'Negative', 'Negative', 'Positive', 'Positive', '56mg/dL', 'Something change between the gestation age'),
+(5, '2024-05-30', 230042, 1, '8.2x10^9/L', '6.6x10^12/L', '15.3g/dL', '250x10^9/L', 'Non-Reactive (Negative)', 'Negative', 'Negative', 'Negative', 'Negative', '56mg/dL', 'Every thing is clear'),
+(6, '2024-05-31', 230045, 1, '8.2x10^9/L', '6.6x10^12/L', '15.3g/dL', '250x10^9/L', 'Non-Reactive (Negative)', 'Negative', 'Negative', 'Negative', 'Negative', '56mg/dL', 'none');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nurse`
+--
+
+DROP TABLE IF EXISTS `nurse`;
+CREATE TABLE IF NOT EXISTS `nurse` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `Hospital` text NOT NULL,
+  `HealtCare` text NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `profile` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `nurse`
+--
+
+INSERT INTO `nurse` (`id`, `name`, `email`, `phone`, `Hospital`, `HealtCare`, `password`, `profile`) VALUES
+(1, 'Alice', 'tumalice200@gmail.com', '0791059314', 'CHUK', 'CMS Biryogo', '$2y$10$TjnPhqk/9lguBblNeMzWu.fkezN3ve4qbSiWvZj7/avCoq/LAkkuy', 'uploads/9335e9e5cc8fa4c2993713db053c802f.png');
 
 -- --------------------------------------------------------
 
@@ -234,30 +263,28 @@ CREATE TABLE IF NOT EXISTS `patientconsoltation` (
   `id` int NOT NULL AUTO_INCREMENT,
   `PatientID` int NOT NULL,
   `Contacts` int NOT NULL,
-  `test_Date` date NOT NULL,
-  `names` varchar(40) NOT NULL,
-  `phone` varchar(40) NOT NULL,
   `Cervical_Screening` enum('Normal','Abnormal') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Temperature` float NOT NULL,
-  `Heart_Bit_Rate` float NOT NULL,
-  `Respiratory_Rate` float NOT NULL,
-  `Height` int NOT NULL,
-  `Ultrasound_weeks` int NOT NULL,
-  `Weight_kg` float NOT NULL,
-  `BMI` float NOT NULL,
-  `MUAC` float NOT NULL,
-  `MaternalComments` varchar(255) DEFAULT NULL,
+  `Temperature` varchar(255) NOT NULL,
+  `Heart_Bit_Rate` varchar(255) NOT NULL,
+  `Respiratory_Rate` varchar(255) NOT NULL,
+  `Height` varchar(255) NOT NULL,
+  `Weight_kg` varchar(255) NOT NULL,
+  `BMI` varchar(255) NOT NULL,
+  `MUAC` varchar(255) NOT NULL,
+  `Blood_Pressure` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `PatientID` (`PatientID`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `patientconsoltation`
 --
 
-INSERT INTO `patientconsoltation` (`id`, `PatientID`, `Contacts`, `test_Date`, `names`, `phone`, `Cervical_Screening`, `Temperature`, `Heart_Bit_Rate`, `Respiratory_Rate`, `Height`, `Ultrasound_weeks`, `Weight_kg`, `BMI`, `MUAC`, `MaternalComments`) VALUES
-(11, 230001, 2, '2024-05-06', 'UWIBAMBE Fabiola', '+250 739382931', 'Normal', 30.9, 5, 8, 182, 3, 65, 52, 115, 'everything is normal'),
-(10, 230001, 1, '2024-05-06', 'UWIBAMBE Fabiola', '+250 739382931', 'Normal', 32.7, 10, 12, 180, 2, 63, 50, 110, 'good');
+INSERT INTO `patientconsoltation` (`id`, `PatientID`, `Contacts`, `Cervical_Screening`, `Temperature`, `Heart_Bit_Rate`, `Respiratory_Rate`, `Height`, `Weight_kg`, `BMI`, `MUAC`, `Blood_Pressure`) VALUES
+(12, 230042, 0, '', '0', '0', '0', '0', '0', '0', '0', ''),
+(13, 230038, 1, 'Normal', '32.7', '10', '12', '180', '63', '50', '110', '23'),
+(14, 230044, 1, 'Normal', '32.7', '180bit/min', '160/min', '180', '63', '25.8', '24.5', '110/70'),
+(15, 230045, 1, 'Normal', '32.7', '180bit/min', '160/min', '180', '63', '25.8', '110', '67');
 
 -- --------------------------------------------------------
 
@@ -291,40 +318,29 @@ CREATE TABLE IF NOT EXISTS `pregnant` (
   `cell` text NOT NULL,
   `village` text NOT NULL,
   `gravida` varchar(255) NOT NULL,
-  `termDelivery` text NOT NULL,
-  `prematureDelivery` text NOT NULL,
-  `numAbortions` int NOT NULL,
-  `parity` varchar(255) NOT NULL,
-  `AgeLastBorn` int NOT NULL,
-  `AliveChildren` int NOT NULL,
+  `termDelivery` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `prematureDelivery` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `numAbortions` int DEFAULT NULL,
+  `parity` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `AgeLastBorn` int DEFAULT NULL,
+  `AliveChildren` int DEFAULT NULL,
   `lmpd` date NOT NULL,
   `edd` date NOT NULL,
   `registed_date` date NOT NULL,
-  `pregnant_days` int NOT NULL,
+  `pregnant_status` text NOT NULL,
   PRIMARY KEY (`regNo`)
-) ENGINE=MyISAM AUTO_INCREMENT=230020 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=230046 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `pregnant`
 --
 
-INSERT INTO `pregnant` (`regNo`, `hospital`, `healthCenter`, `healthPost`, `name`, `dob`, `age`, `MaritalStatus`, `partnerName`, `partnerAge`, `employment`, `bloodGroup`, `PhoneNumber`, `ContactNumber`, `education`, `ubudehe`, `religion`, `accompany`, `province`, `district`, `sector`, `cell`, `village`, `gravida`, `termDelivery`, `prematureDelivery`, `numAbortions`, `parity`, `AgeLastBorn`, `AliveChildren`, `lmpd`, `edd`, `registed_date`, `pregnant_days`) VALUES
-(230001, 'Byumba', 'Mulindi', 'none', 'UWIBAMBE Fabiola', '1999-12-04', 25, 'Single', 'Patrick Abayisenga', 32, 'none', 'AB', '+250 739382931', '0784481603', 'yes', 3, 'Catholic\r\n', 'No', 'North', 'Gicumbi', 'Kaniga', 'Mulindi', 'Centre Mulindi', '3.6%', 'yes', 'no', 0, '0', 0, 0, '2024-04-12', '2025-01-18', '0000-00-00', 0),
-(230002, 'Byumba', 'Mulindi', 'none', 'Rosine', '2004-02-29', 19, 'Married', 'Bosco', 25, 'Yes', 'A', '+250784481603', '0784481603', 'yes', 1, 'Catholic\r\n', 'No', 'Kigali', 'Gasabo', 'Gatsata', 'Karuruma', 'Kingasire', '3.6%', 'yes', 'No', 0, '0', 0, 0, '2024-04-17', '2025-06-29', '0000-00-00', 0),
-(230003, 'Byumba', 'Mulindi', 'none', 'Rosine', '2000-02-29', 24, 'Single', 'Bosco', 23, 'Yes', 'B', '+250739382931', '0784481603', 'yes', 3, 'Catholic\r\n', 'Yes', 'Eastern Province', 'Bugesera', 'Juru', 'Juru', 'Ayabakiza', '3.6%', 'yes', 'Yes', 1, '1', 1, 1, '2024-04-17', '2025-07-07', '0000-00-00', 0),
-(230004, 'Byumba', 'Mulindi', 'none', 'Rosine', '2000-02-29', 24, 'Single', 'Bosco', 23, 'Yes', 'B', '+250739382931', '0784481603', 'yes', 3, 'Catholic\r\n', 'Yes', 'Eastern Province', 'Bugesera', 'Juru', 'Juru', 'Ayabakiza', '3.6%', 'yes', 'Yes', 1, '1', 1, 1, '2024-04-17', '2025-07-07', '0000-00-00', 0),
-(230005, 'Byumba', 'Mulindi', 'none', 'UWIHIRWE Sophie', '1999-07-15', 25, 'Single', 'Patrick Abayisenga', 28, 'Yes', 'B', '+250739382931', '+250784481603', 'yes', 3, 'Catholic\r\n', 'No', 'North', 'Gicumbi', 'Kaniga', 'Bugomba', 'Kajevuba', '3.6%', 'no', 'No', 0, '0', 0, 0, '2024-04-28', '2025-01-12', '2024-05-10', 0),
-(230006, 'Byumba', 'Mulindi', 'none', 'UWIHIRWE Sophie', '1999-07-15', 25, 'Single', 'Patrick Abayisenga', 28, 'Yes', 'B', '+250739382931', '+250784481603', 'yes', 3, 'Catholic\r\n', 'No', 'North', 'Gicumbi', 'Kaniga', 'Bugomba', 'Kajevuba', '3.6%', 'no', 'No', 0, '0', 0, 0, '2024-04-28', '2025-01-12', '2024-05-10', 12),
-(230007, 'Byumba', 'Mulindi', 'none', 'Kuramukobwa Emelance', '1995-01-01', 29, 'Single', 'Patrick Abayisenga', 34, 'No', 'B', '+250784481603', '+250739382931', 'yes', 4, 'Catholic\r\n', 'No', 'West', 'Karongi', 'Rwankuba', 'Bigugu', 'Kagusa', '3.6%', 'no', 'No', 0, '0', 0, 0, '2024-05-01', '2025-01-15', '2024-05-10', 9),
-(230011, 'CHUB', 'CMS Biryogo', 'none', 'Kuramukobwa Emelance', '1995-12-07', 29, 'Single', 'Musoni Desire', 31, 'Yes', 'B', '+250739382931', '0784481603', 'yes', 3, 'Catholic\r\n', 'No', 'West', 'Karongi', 'Bwishyura', 'Burunga', 'Kabuga', '3.6%', 'no', 'No', 0, '0', 0, 0, '2023-09-01', '2024-05-17', '2024-05-14', 256),
-(230012, 'CHUK', 'CMS Biryogo', 'none', 'Mugeni Blandine', '1996-01-01', 28, 'Single', 'Mugenzi Olivier', 28, 'Yes', 'AB', '+250784481603', '+250784481603', 'yes', 2, 'Advantist\r\n', 'Yes', 'West', 'Karongi', 'Gitesi', 'Gitega', 'Kagari', '0', 'no', 'No', 0, '0', 0, 0, '2024-01-28', '2024-11-03', '2024-05-14', 107),
-(230013, 'Norbert Hospital', 'CMS Biryogo', 'none', 'Uwamahoro Sandrine', '1997-10-10', 27, 'Single', 'ISHIMWE Albert', 25, 'No', 'O', '+250739382931', '+2500784481603', 'yes', 3, 'Catholic\r\n', 'Other', 'North', 'Gicumbi', 'Mukarange', 'Rusambya', 'Nyagakizi', '0', 'no', 'No', 0, '0', 0, 0, '2023-12-05', '2024-09-10', '2024-05-15', 162),
-(230014, 'Norbert Hospital', 'CMS Biryogo', 'none', 'Uwamahoro Sandrine', '1997-10-10', 27, 'Single', 'ISHIMWE Albert', 25, 'No', 'O', '+250739382931', '+2500784481603', 'yes', 3, 'Catholic\r\n', 'Other', 'North', 'Gicumbi', 'Mukarange', 'Rusambya', 'Nyagakizi', '0', 'no', 'No', 0, '0', 0, 0, '2023-12-05', '2024-09-10', '2024-05-15', 162),
-(230015, 'Norbert Hospital', 'CMS Biryogo', 'none', 'Uwamahoro Sandrine', '1997-10-10', 27, 'Single', 'ISHIMWE Albert', 25, 'No', 'O', '+250739382931', '+2500784481603', 'yes', 3, 'Catholic', 'Other', 'North', 'Gicumbi', 'Mukarange', 'Rusambya', 'Nyagakizi', '0', 'no', 'No', 0, '0', 0, 0, '2023-12-05', '2024-09-10', '2024-05-15', 162),
-(230016, 'Norbert Hospital', 'CMS Biryogo', 'none', 'Uwamahoro Sandrine', '1997-10-10', 27, 'Single', 'ISHIMWE Albert', 25, 'No', 'O', '+250739382931', '+2500784481603', 'yes', 3, 'Catholic', 'Other', 'North', 'Gicumbi', 'Mukarange', 'Rusambya', 'Nyagakizi', '0', 'no', 'No', 0, '0', 0, 0, '2023-12-05', '2024-09-10', '2024-05-15', 162),
-(230017, 'Norbert Hospital', 'CMS Biryogo', 'none', 'Uwamahoro Sandrine', '1997-10-10', 27, 'Single', 'ISHIMWE Albert', 25, 'No', 'O', '+250739382931', '+2500784481603', 'yes', 3, 'Catholic', 'Other', 'North', 'Gicumbi', 'Mukarange', 'Rusambya', 'Nyagakizi', '0', 'no', 'No', 0, '0', 0, 0, '2023-12-05', '2024-09-10', '2024-05-15', 162),
-(230018, 'Norbert Hospital', 'CMS Biryogo', 'none', 'Uwamahoro Sandrine', '1997-10-10', 27, 'Single', 'ISHIMWE Albert', 25, 'No', 'O', '+250739382931', '+2500784481603', 'yes', 3, 'Catholic', 'Other', 'North', 'Gicumbi', 'Mukarange', 'Rusambya', 'Nyagakizi', '0', 'no', 'No', 0, '0', 0, 0, '2023-12-05', '2024-09-10', '2024-05-15', 162),
-(230019, 'CHUB', 'CMS Biryogo', 'none', 'liliose', '2015-02-01', 28, 'Married', 'Musoni Desire', 40, 'No', 'B', '+250739382931', '+250784481603', 'yes', 3, 'Catholic', 'Yes', 'Kigali', 'Gasabo', 'Kacyiru', 'Kamatamu', 'Gataba', '2', '1', 'No', 0, '1', 2, 1, '2024-05-10', '2025-02-14', '2024-05-18', 8);
+INSERT INTO `pregnant` (`regNo`, `hospital`, `healthCenter`, `healthPost`, `name`, `dob`, `age`, `MaritalStatus`, `partnerName`, `partnerAge`, `employment`, `bloodGroup`, `PhoneNumber`, `ContactNumber`, `education`, `ubudehe`, `religion`, `accompany`, `province`, `district`, `sector`, `cell`, `village`, `gravida`, `termDelivery`, `prematureDelivery`, `numAbortions`, `parity`, `AgeLastBorn`, `AliveChildren`, `lmpd`, `edd`, `registed_date`, `pregnant_status`) VALUES
+(230031, 'CHUK', 'CMS Biryogo', 'none', 'UWIBAMBE Fabiola', '2000-12-12', 23, 'Married', 'ISHIMWE Albert', 26, 'Yes', 'B', '+250739382931', '+250678900987', 'yes', 2, 'Catholic', 'Yes', 'Kigali', 'Gasabo', 'Rusororo', 'Bisenga', 'Bisenga', 'G1', 'Null', 'Null', 0, 'Null', 0, 0, '2024-05-12', '2025-02-16', '2024-05-26', 'Progress'),
+(230045, 'chuk', 'CMS Biryogo', 'none', 'tuyisingize aline', '2001-01-10', 23, 'Married', 'Mugenzi Olivier', 30, 'Yes', 'B', '+250784481603', '+250733567845', 'yes', 3, 'Catholic', 'Yes', 'Kigali', 'Gasabo', 'Rusororo', 'Kinyana', 'Busenyi', 'G1', 'Null', 'Null', 0, 'Null', 0, 0, '2024-05-13', '2025-02-17', '2024-05-31', 'Progress'),
+(230044, 'CHUK', 'CMS Biryogo', 'rwampara', 'Tumusime Alice', '1990-06-12', 33, 'Married', 'Musoni Desire', 36, 'Yes', 'A', '+250784481603', '+250678900987', 'yes', 3, 'Catholic', 'No', 'West', 'Ngororero', 'Gatumba', 'Cyome', 'Nyakagezi', 'G1', 'Null', 'Null', 0, 'Null', 0, 0, '2024-05-18', '2025-02-22', '2024-05-30', 'Progress'),
+(230043, 'CHUK', 'CMS Biryogo', 'rwampara', 'Tumusime Alice', '1990-06-12', 33, 'Married', 'Musoni Desire', 36, 'Yes', 'A', '+250784481603', '+250678900987', 'yes', 3, 'Catholic', 'No', 'West', 'Ngororero', 'Gatumba', 'Cyome', 'Nyakagezi', 'G1', 'Null', 'Null', 0, 'Null', 0, 0, '2024-05-18', '2025-02-22', '2024-05-30', 'Progress'),
+(230042, 'Norbert Hospital', 'CMS Biryogo', 'rwampara', 'Uwamahoro Sandrine', '2003-01-05', 21, 'Single', 'ISHIMWE Albert', 43, 'Yes', 'B', '+250784481603', '+250678900987', 'none', 2, 'Catholic', 'Yes', 'Kigali', 'Gasabo', 'Remera', 'Nyabisindu', 'Amarembo I', 'G1', 'Null', 'Null', 0, 'Null', 0, 0, '2024-05-15', '2025-02-19', '2024-05-28', 'Progress');
 
 -- --------------------------------------------------------
 
@@ -378,7 +394,15 @@ CREATE TABLE IF NOT EXISTS `preventivecare` (
   `health_worker` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `patientID` (`patientID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `preventivecare`
+--
+
+INSERT INTO `preventivecare` (`id`, `numContacts`, `patientID`, `provision_iron_folic`, `provision_metoclopramide`, `tetanus_diptheria`, `calcium`, `mosquito_net`, `urinary_treatment`, `rdv`, `health_provider`, `health_worker`) VALUES
+(3, 1, 230029, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', '2025-02-16', 'CMS Biryogo', 'Kamanzi'),
+(4, 1, 230042, 'Yes', 'No', 'No', 'Yes', 'Yes', 'Yes', '2025-02-19', 'CMS Biryogo', 'Kamanzi Eric');
 
 -- --------------------------------------------------------
 
@@ -389,10 +413,10 @@ CREATE TABLE IF NOT EXISTS `preventivecare` (
 DROP TABLE IF EXISTS `ultrasoundtable`;
 CREATE TABLE IF NOT EXISTS `ultrasoundtable` (
   `Ultra_ID` int NOT NULL AUTO_INCREMENT,
-  `Contacts` int NOT NULL,
   `Test_Date` date NOT NULL,
   `PatientID` int NOT NULL,
-  `Names` varchar(20) NOT NULL,
+  `Contact` int NOT NULL,
+  `Gestation_Week` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Fundal_Height` float NOT NULL,
   `Fetal_Heart_Beat` float NOT NULL,
   `Fetal_movement` enum('Yes','No') DEFAULT NULL,
@@ -400,47 +424,59 @@ CREATE TABLE IF NOT EXISTS `ultrasoundtable` (
   `Fetal_Presentation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `E_Fetal_Weight` float NOT NULL,
   `Amniotic_F_Index` int NOT NULL,
-  `Number_Fetus` int NOT NULL,
+  `Number_Fetus` text NOT NULL,
   `MaternalComments` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Ultra_ID`),
   KEY `PatientID` (`PatientID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `ultrasoundtable`
 --
 
-INSERT INTO `ultrasoundtable` (`Ultra_ID`, `Contacts`, `Test_Date`, `PatientID`, `Names`, `Fundal_Height`, `Fetal_Heart_Beat`, `Fetal_movement`, `Fetal_Heart_Rate`, `Fetal_Presentation`, `E_Fetal_Weight`, `Amniotic_F_Index`, `Number_Fetus`, `MaternalComments`) VALUES
-(1, 1, '2024-05-06', 230001, 'UWIBAMBE Fabiola', 3.28, 3, 'Yes', 3, 'Cephalic', 2, 117, 0, ''),
-(2, 2, '2024-05-06', 230001, 'UWIBAMBE Fabiola', 4, 9, 'Yes', 5, 'Unknown', 2.9, 114, 1, '');
+INSERT INTO `ultrasoundtable` (`Ultra_ID`, `Test_Date`, `PatientID`, `Contact`, `Gestation_Week`, `Fundal_Height`, `Fetal_Heart_Beat`, `Fetal_movement`, `Fetal_Heart_Rate`, `Fetal_Presentation`, `E_Fetal_Weight`, `Amniotic_F_Index`, `Number_Fetus`, `MaternalComments`) VALUES
+(5, '0000-00-00', 230039, 0, '', 0, 0, NULL, 0, '', 0, 0, '0', NULL),
+(6, '2024-05-28', 230037, 1, '4', 3.2, 3, 'Yes', 3, 'cephalic', 2.2, 1200, '0', '565'),
+(7, '2024-05-30', 230044, 1, '1', 4.8, 12, 'Yes', 110, 'cephalic', 1.002, 14, '0', 'Normal AFI, no intervention needed'),
+(8, '2024-05-31', 230045, 1, '1', 2.2, 12, 'Yes', 110, 'cephalic', 2.2, 14, '0', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `urinary_test`
+-- Table structure for table `urinaryexams`
 --
 
-DROP TABLE IF EXISTS `urinary_test`;
-CREATE TABLE IF NOT EXISTS `urinary_test` (
-  `testID` int NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `urinaryexams`;
+CREATE TABLE IF NOT EXISTS `urinaryexams` (
+  `ID` int NOT NULL AUTO_INCREMENT,
   `PatientID` int DEFAULT NULL,
-  `CONTACTS` varchar(255) DEFAULT NULL,
-  `DATE` date DEFAULT NULL,
-  `Glucosuria` varchar(255) DEFAULT NULL,
-  `Proteinuria` varchar(255) DEFAULT NULL,
-  `Urinanalysis_ECBU` varchar(255) DEFAULT NULL,
-  `Add_Comments` text,
-  PRIMARY KEY (`testID`),
+  `Contact` int DEFAULT NULL,
+  `testDate` date DEFAULT NULL,
+  `Glucosuria` varchar(55) DEFAULT NULL,
+  `Proteinuria` enum('Positive','Negative') DEFAULT NULL,
+  `Appearance` varchar(55) DEFAULT NULL,
+  `pH` float DEFAULT NULL,
+  `Protein` enum('Positive','Negative') DEFAULT NULL,
+  `Glucose` enum('Positive','Negative') DEFAULT NULL,
+  `Ketones` enum('Positive','Negative') DEFAULT NULL,
+  `Leukocytes` varchar(55) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `PatientID` (`PatientID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `urinary_test`
+-- Dumping data for table `urinaryexams`
 --
 
-INSERT INTO `urinary_test` (`testID`, `PatientID`, `CONTACTS`, `DATE`, `Glucosuria`, `Proteinuria`, `Urinanalysis_ECBU`, `Add_Comments`) VALUES
-(1, 230001, '1', '2024-05-09', '30.6%', '28.9%', '2.9%', 'Good'),
-(2, 230002, '1', '2024-05-09', '30.6%', '28.9%', '2.9%', 'verynice');
+INSERT INTO `urinaryexams` (`ID`, `PatientID`, `Contact`, `testDate`, `Glucosuria`, `Proteinuria`, `Appearance`, `pH`, `Protein`, `Glucose`, `Ketones`, `Leukocytes`) VALUES
+(11, 230004, 1, '2024-05-26', '189mg/dL', 'Positive', 'Amber', 7, 'Positive', 'Negative', 'Negative', '20/µL'),
+(10, 230004, 1, '2024-05-26', '189mg/dL', 'Positive', 'Amber', 7, 'Positive', 'Negative', 'Negative', '20/µL'),
+(9, 230002, 1, '2024-05-26', '190mg/dL', 'Negative', 'Orange', 7.5, 'Positive', 'Positive', 'Positive', '10/µL'),
+(8, 230001, 1, '2024-05-26', '190mg/dL', 'Positive', 'Dark Yellow', 7.5, 'Positive', 'Positive', 'Positive', '10/µL'),
+(7, 230001, 1, '2024-05-26', '190mg/dL', 'Positive', 'Dark Yellow', 7.5, 'Positive', 'Positive', 'Positive', '10/µL'),
+(12, 230004, 1, '2024-05-26', '189mg/dL', 'Positive', 'Amber', 7, 'Positive', 'Negative', 'Negative', '20/µL'),
+(13, 230042, 1, '2024-05-30', '190mg/dL', 'Negative', 'Clear', 7.5, 'Negative', 'Negative', 'Negative', '20/µL'),
+(14, 230045, 1, '2024-05-31', '190mg/dL', 'Negative', 'Clear', 7.5, 'Negative', 'Positive', 'Negative', '20/µL');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
